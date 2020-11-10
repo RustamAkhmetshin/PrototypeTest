@@ -10,6 +10,7 @@ public class Factory : MonoBehaviour
     [SerializeField] private GameObject _bulletPool;
     [SerializeField] private GameObject _levelManager;
     [SerializeField] private GameObject _enemiesController;
+    [SerializeField] private GameObject _dataManager;
     
     public IUIManager GetUIManager()
     {
@@ -39,5 +40,10 @@ public class Factory : MonoBehaviour
     public IEnemiesController GetEnemiesController()
     {
         return Instantiate(_enemiesController, transform).GetComponent<IEnemiesController>();
+    }
+    
+    public IDataManager GetDataManager()
+    {
+        return Instantiate(_dataManager, transform).GetComponent<IDataManager>();
     }
 }

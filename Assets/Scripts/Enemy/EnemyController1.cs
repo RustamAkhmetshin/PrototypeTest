@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IShoot, IDamagable
+public class EnemyController1 : MonoBehaviour, IShoot, IDamagable
 {
     [SerializeField] private float _maxHealth;
     [SerializeField] private float _moveSpeed;

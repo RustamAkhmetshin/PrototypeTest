@@ -15,6 +15,7 @@ public class Root : MonoBehaviour
     private IPool _bulletPool;
     private ILevelManager _levelManager;
     private IEnemiesController _enemiesController;
+    private IDataManager _dataManager;
 
     void Awake()
     {
@@ -35,8 +36,7 @@ public class Root : MonoBehaviour
 
     public void Initialize()
     {
-        BulletPool.Preload(20);
-        PlayerController.Init();
+        LevelManager.StartGame();
         _initialized = true;
     }
     
@@ -68,5 +68,10 @@ public class Root : MonoBehaviour
     public static IEnemiesController EnemiesController
     {
         get { return _instance._enemiesController = _instance._enemiesController ?? _factory.GetEnemiesController(); }
+    }
+    
+    public static IDataManager DataManager
+    {
+        get { return _instance._dataManager = _instance._dataManager ?? _factory.GetDataManager(); }
     }
 }

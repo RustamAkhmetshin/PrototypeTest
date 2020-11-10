@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Rustam\.Rider2019.1\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Rustam\.Rider2019.1\system\resharper-host\local\Transient\ReSharperHost\v191\SolutionCaches\_PrototypeTest.422374397.00" t="ExcludeRecursive" />
+    <e p="G:\PrototypeTest" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="BulletPool" t="Include">
+            <e p="Bullet.cs" t="Include" />
+            <e p="BulletPool.cs" t="Include" />
+          </e>
+          <e p="Data" t="Include">
+            <e p="DataManager.cs" t="Include" />
+            <e p="EnemiesData.cs" t="Include" />
+            <e p="EnemyData.cs" t="Include" />
+            <e p="GlobalVariables.cs" t="Include" />
+            <e p="IDataManager.cs" t="Include" />
+            <e p="PlayerData.cs" t="Include" />
+          </e>
+          <e p="Enemy" t="Include">
+            <e p="EnemiesController.cs" t="Include" />
+            <e p="Enemy.cs" t="Include" />
+            <e p="EnemyController.cs" t="Include" />
+            <e p="EnemyController1.cs" t="Include" />
+            <e p="IEnemy.cs" t="Include" />
+          </e>
+          <e p="Enums" t="Include">
+            <e p="EnemyTypes.cs" t="Include" />
+            <e p="GameMode.cs" t="Include" />
+          </e>
+          <e p="Factory.cs" t="Include" />
+          <e p="Interfaces" t="Include">
+            <e p="CharacterUnit.cs" t="Include" />
+            <e p="IDamagable.cs" t="Include" />
+            <e p="IEnemiesController.cs" t="Include" />
+            <e p="IPool.cs" t="Include" />
+            <e p="IShoot.cs" t="Include" />
+          </e>
+          <e p="LevelManagement" t="Include">
+            <e p="ILevelManager.cs" t="Include" />
+            <e p="LevelManager.cs" t="Include" />
+          </e>
+          <e p="Player" t="Include">
+            <e p="IPlayerController.cs" t="Include" />
+            <e p="Player.cs" t="Include" />
+            <e p="PlayerController.cs" t="Include" />
+          </e>
+          <e p="Root.cs" t="Include" />
+          <e p="SingleComponents" t="Include">
+            <e p="CameraSeek.cs" t="Include" />
+            <e p="MovePoint.cs" t="Include" />
+          </e>
+          <e p="UI" t="Include">
+            <e p="Interfaces" t="Include">
+              <e p="IJoystickUIComponent.cs" t="Include" />
+              <e p="IUIManager.cs" t="Include" />
+              <e p="IWindow.cs" t="Include" />
+            </e>
+            <e p="JoystickUIComponent.cs" t="Include" />
+            <e p="RestartWindow.cs" t="Include" />
+            <e p="StickComponent.cs" t="Include" />
+            <e p="UIManager.cs" t="Include" />
+            <e p="Window.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="PrototypeTest.sln" t="IncludeFlat" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
