@@ -11,7 +11,9 @@ public class EnemiesData : ScriptableObject
     
     public List<EnemyData> _enemyTypes;
     
+    #if UNITY_EDITOR
     private void OnValidate() {
+        
         
         string filePathAndName = "Assets/Scripts/Enums/" + ENUM_NAME + ".cs";
  
@@ -28,4 +30,5 @@ public class EnemiesData : ScriptableObject
         }
         AssetDatabase.Refresh();
     }
+    #endif
 }
