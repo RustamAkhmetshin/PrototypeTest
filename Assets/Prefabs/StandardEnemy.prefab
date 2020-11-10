@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7111347262774543008}
   m_Layer: 8
   m_Name: bulletPlace
-  m_TagString: Untagged
+  m_TagString: BulletPlace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 8778260154026798563}
   m_Layer: 2
   m_Name: point_1
-  m_TagString: Untagged
+  m_TagString: MovePoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 8778260154155335557}
   m_Layer: 2
   m_Name: point_2
-  m_TagString: Untagged
+  m_TagString: MovePoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

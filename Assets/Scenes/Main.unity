@@ -1725,6 +1725,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 594242547}
     m_Modifications:
+    - target: {fileID: 7111347262774543004, guid: 30e04768b6e6d594da5af663bb84c536,
+        type: 3}
+      propertyPath: m_TagString
+      value: BulletPlace
+      objectReference: {fileID: 0}
     - target: {fileID: 7729985695617865879, guid: 30e04768b6e6d594da5af663bb84c536,
         type: 3}
       propertyPath: m_Name
@@ -1784,6 +1789,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8778260154026798564, guid: 30e04768b6e6d594da5af663bb84c536,
+        type: 3}
+      propertyPath: m_TagString
+      value: MovePoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 8778260154155335582, guid: 30e04768b6e6d594da5af663bb84c536,
+        type: 3}
+      propertyPath: m_TagString
+      value: MovePoint
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30e04768b6e6d594da5af663bb84c536, type: 3}
