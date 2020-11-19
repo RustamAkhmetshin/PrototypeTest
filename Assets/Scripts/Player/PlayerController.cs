@@ -2,30 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IPlayerController
+public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private GameObject _joystickGameObject;
+    [SerializeField] private IInputManager _inputManager;
     [SerializeField] private Transform _bulletPlace;
     
     private Player _player;
-    private IPool _bulletPool => Root.BulletPool;
+    private IPool _bulletPool => Root.Pool;
     
     private bool _initialized = false;
 
-    public void Init()
+    public void Init(PlayerConfiguration playerConfig, MovementType movementType, Weapon weapon, IInputManager inputManager)
     {
-        var data = Root.DataManager.GetPlayerData();
-        
-        _player = new Player(data.MaxHealth, data.MoveSpeed, data.ShootLatency, data.BulletSpeed, data.DamageStrength, transform);
+        weapon.SetBulletPlace(_bulletPlace);
+        _player = new Player(playerConfig,  movementType, weapon, transform);
         _player.OnDied += DieEventHandler;
-        _player.OnReadyToShoot += ReadyToSpawnBullet;
+
+        _inputManager = inputManager;
+        _inputManager.InitInputManager();
+
+        _inputManager.OnMove += Move;
+        _inputManager.OnStartShooting += StartShoting;
+        _inputManager.OnStopShooting += StopShoting;
         
-        var joystick = Root.UIManager.InitializeWindow<JoystickUIComponent>(_joystickGameObject,
-            Root.UIManager.GetMainCanvas().transform);
-
-        joystick.OnMove += Move;
-        joystick.OnTouchUp += StartShoting;
-
+        
         _initialized = true;
     }
 
@@ -59,26 +59,28 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     public Vector3 GetPlayerPosition()
     {
-        return _player.GetPosition();
+        return _player.Position;
     }
 
-    public Transform GetPlayerTranssform()
+    public Transform GetPlayerTransform()
     {
         return transform;
     }
 
     public Quaternion GetPlayerRotation()
     {
-        return _player.GetRotation();
+        return _player.Rotation;
     }
     
     public void Move(Vector3 vector)
     {
+        Debug.Log(vector);
         _player.Move(vector);
     }
 
     public void StartShoting()
     {
+        Debug.Log("123123");
         _player.StartShoting();
     }
     
@@ -86,11 +88,5 @@ public class PlayerController : MonoBehaviour, IPlayerController
     {
         Root.LevelManager.GameOver();
         Destroy(gameObject);
-    }
-
-    private void ReadyToSpawnBullet(Transform target)
-    {
-        transform.LookAt(target);
-        _bulletPool.Spawn(_bulletPlace.position).Init(_player.BulletSpeed, _player.DamageStrength, transform.rotation);
     }
 }

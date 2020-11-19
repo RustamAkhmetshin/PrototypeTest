@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletPool : MonoBehaviour, IPool
+public class Pool : MonoBehaviour, IPool
 {
     private const int PreloadQty = 20;
     
@@ -12,7 +12,6 @@ public class BulletPool : MonoBehaviour, IPool
     private void Awake()
     {
         _inactiveObjects = new Stack<Bullet>(PreloadQty);
-        
     }
     
     public Bullet Spawn(Vector3 position)

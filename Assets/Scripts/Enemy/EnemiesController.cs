@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 
 
-public class EnemiesController : MonoBehaviour, IEnemiesController
+public class EnemiesController : MonoBehaviour
 {
 
     [SerializeField]private List<Transform> _allEnemies;

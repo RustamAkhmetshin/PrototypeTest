@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using EventBusSystem;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -10,28 +11,17 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private List<Transform> _movePoints;
     
     private Enemy _enemy;
-    
-    private IPlayerController _player => Root.PlayerController;
-    private IPool _bulletPool => Root.BulletPool;
-    
-    private bool _initialized = false;
 
-    private void Start()
-    {
-        Init();
-    }
+    private bool _initialized = false;
     
-    public void Init()
+    
+    public void Init(EnemyData enemyData, MovementType movementType, Weapon weapon)
     {
         var data = Root.DataManager.GetEnemiesData()._enemyTypes.FirstOrDefault(e => e.Name == _type.ToString());
-        _enemy = new Enemy(data.MaxHealth, data.MoveSpeed, data.ShootLatency,
-            data.BulletSpeed, data.DamageStrength, transform, data.ShootingTime, _movePoints);
+        _enemy = new Enemy(data, movementType, weapon, transform);
         
         _enemy.OnDied += DieEventHandler;
-        _enemy.OnReadyToShoot += ReadyToSpawnBullet;
 
-        Root.EnemiesController.OnStopGame += () => { _enemy.StopGame(); };
-        
         _initialized = true;
         _enemy.Move(new Vector3());
     }
@@ -41,6 +31,7 @@ public class EnemyController : MonoBehaviour
         if (_initialized)
         {
             _enemy.Update(Time.deltaTime);
+            transform.rotation = _enemy.Rotation;
         }
     }
 
@@ -60,19 +51,13 @@ public class EnemyController : MonoBehaviour
     
     public Vector3 GetPlayerPosition()
     {
-        return _enemy.GetPosition();
+        return _enemy.Position;
     }
 
     private void DieEventHandler()
     {
-        Root.EnemiesController.Remove(transform);
+        EventBus.RaiseEvent<IEnemyControlHandler>(h => h.EnemyKilled(transform));
         Destroy(gameObject);
     }
-
-    private void ReadyToSpawnBullet(Transform target)
-    {
-        target = Root.PlayerController.GetPlayerTranssform();
-        transform.LookAt(target);
-        _bulletPool.Spawn(_bulletPlace.position).Init(_enemy.BulletSpeed, _enemy.DamageStrength, transform.rotation);
-    }
+    
 }

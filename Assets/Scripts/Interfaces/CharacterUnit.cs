@@ -3,18 +3,21 @@ using System;
 using System.Data.Common;
 using UnityEngine;
 
-public abstract class CharacterUnit : IDamagable, IShoot
+public abstract class CharacterUnit
 {
-    protected float MaxHealth;
-    protected float MoveSpeed;
-    protected float CurrentHealth;
-    protected float ShootLatency;
-    protected Transform CharacterTransform;
+    [Serializable]
+    protected class UnitConfigurationData
+    {
+        public float MaxHealth;
+    }
+
+    [Serializable]
+    protected class UnitStateData
+    {
+        public float Health;
+    }
     
-    public float BulletSpeed;
-    public float DamageStrength;
-    
-    protected enum State
+    public enum UnitState
     {
         IsMoving,
         IsShooting,
@@ -22,41 +25,30 @@ public abstract class CharacterUnit : IDamagable, IShoot
         Idle,
     }
 
-    protected State CurrentState;
-
-    public CharacterUnit(float maxHealth, float moveSpeed, float shootLatency, float bulletSpeed, float damageStrength, Transform characterTransform)
+    protected UnitConfigurationData Configuration;
+    protected UnitStateData StateData;
+    
+    public float CurrentHealth
     {
-        this.MaxHealth = maxHealth;
-        this.MoveSpeed = moveSpeed;
-        this.ShootLatency = shootLatency;
-        this.BulletSpeed = bulletSpeed;
-        this.DamageStrength = damageStrength;
-        this.CharacterTransform = characterTransform;
+        get { return StateData.Health; }
+        set { StateData.Health = value; }
+    }
+    
+    protected UnitState CurrentUnitState;
+
+    public CharacterUnit(float maxHealth)
+    {
+        Configuration = new UnitConfigurationData();
+        StateData = new UnitStateData();
+        this.Configuration.MaxHealth = maxHealth;
         this.CurrentHealth = maxHealth;
-        CurrentState = State.Idle;
+        CurrentUnitState = UnitState.Idle;
     }
-
-    public virtual void AddDamage(float damage)
-    {
-        CurrentHealth -= damage;
-        if (CurrentHealth <= 0)
-        {
-            Die();
-        }
-    }
-
-    public abstract void Move(Vector3 direction);
+    
     public abstract void Update(float deltaTime);
     public abstract void FixedUpdate(float fixedDeltaTime);
     public abstract void Hit(Collider collider);
-
-    public virtual void Die()
-    {
-        CurrentState = State.IsNotAlive;
-    }
-
-    public virtual void Shoot()
-    {
-        CurrentState = State.IsShooting;
-    }
 }
+
+
+

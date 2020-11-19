@@ -11,7 +11,6 @@ public class StickComponent : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
     private Vector3 _clickOffset;
 
 
-
     private void Start()
     {
         _zAxis = 0;

@@ -9,7 +9,7 @@
         <e p="Scripts" t="Include">
           <e p="BulletPool" t="Include">
             <e p="Bullet.cs" t="Include" />
-            <e p="BulletPool.cs" t="Include" />
+            <e p="Pool.cs" t="Include" />
           </e>
           <e p="Data" t="Include">
             <e p="DataManager.cs" t="Include" />
@@ -17,33 +17,47 @@
             <e p="EnemyData.cs" t="Include" />
             <e p="GlobalVariables.cs" t="Include" />
             <e p="IDataManager.cs" t="Include" />
-            <e p="PlayerData.cs" t="Include" />
+            <e p="PlayerConfiguration.cs" t="Include" />
+            <e p="WeaponData.cs" t="Include" />
           </e>
           <e p="Enemy" t="Include">
             <e p="EnemiesController.cs" t="Include" />
             <e p="Enemy.cs" t="Include" />
             <e p="EnemyController.cs" t="Include" />
+            <e p="IEnemyControlHandler.cs" t="Include" />
+            <e p="IEnemyStateControlHandler.cs" t="Include" />
           </e>
           <e p="Enums" t="Include">
             <e p="EnemyTypes.cs" t="Include" />
             <e p="GameMode.cs" t="Include" />
           </e>
+          <e p="EventBusSystem" t="Include">
+            <e p="EventBus.cs" t="Include" />
+            <e p="EventBusHelper.cs" t="Include" />
+            <e p="IGlobalSubscriber.cs" t="Include" />
+            <e p="SubscribersList.cs" t="Include" />
+          </e>
           <e p="Factory.cs" t="Include" />
           <e p="Interfaces" t="Include">
             <e p="CharacterUnit.cs" t="Include" />
             <e p="IDamagable.cs" t="Include" />
-            <e p="IEnemiesController.cs" t="Include" />
+            <e p="IInputManager.cs" t="Include" />
             <e p="IPool.cs" t="Include" />
-            <e p="IShoot.cs" t="Include" />
           </e>
           <e p="LevelManagement" t="Include">
             <e p="ILevelManager.cs" t="Include" />
             <e p="LevelManager.cs" t="Include" />
           </e>
+          <e p="Movement" t="Include">
+            <e p="IMovable.cs" t="Include" />
+            <e p="MovementType.cs" t="Include" />
+            <e p="StandardEnemyMovement.cs" t="Include" />
+            <e p="StandardPlayerMovement.cs" t="Include" />
+          </e>
           <e p="Player" t="Include">
-            <e p="IPlayerController.cs" t="Include" />
             <e p="Player.cs" t="Include" />
             <e p="PlayerController.cs" t="Include" />
+            <e p="StickInputManager.cs" t="Include" />
           </e>
           <e p="Root.cs" t="Include" />
           <e p="SingleComponents" t="Include">
@@ -52,7 +66,6 @@
           </e>
           <e p="UI" t="Include">
             <e p="Interfaces" t="Include">
-              <e p="IJoystickUIComponent.cs" t="Include" />
               <e p="IUIManager.cs" t="Include" />
               <e p="IWindow.cs" t="Include" />
             </e>
@@ -61,6 +74,11 @@
             <e p="StickComponent.cs" t="Include" />
             <e p="UIManager.cs" t="Include" />
             <e p="Window.cs" t="Include" />
+          </e>
+          <e p="Weapon" t="Include">
+            <e p="EnemyWeapon.cs" t="Include" />
+            <e p="IWeapon.cs" t="Include" />
+            <e p="StandardWeapon.cs" t="Include" />
           </e>
         </e>
       </e>

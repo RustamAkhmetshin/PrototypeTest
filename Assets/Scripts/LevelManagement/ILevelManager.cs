@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using UnityEngine;
 
 public interface ILevelManager
@@ -7,4 +8,6 @@ public interface ILevelManager
     void StartGame();
     GameObject GetRestartWindow();
     void GameOver();
+
+    List<Transform> GetSpawnedEnemiesList();
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 853564230180178618}
   - component: {fileID: 2516859143511107404}
   m_Layer: 0
-  m_Name: BulletPool
+  m_Name: Pool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6205118084911106287}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 832f12c8c23b25741913340b26192b45, type: 3}
+  m_Script: {fileID: 11500000, guid: 2bf230fb354028e4a96cfb12cd82cd12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletPrefab: {fileID: 1338020781721811094, guid: 9aca17cc3e79a2f4681d3a7be8934e6b,

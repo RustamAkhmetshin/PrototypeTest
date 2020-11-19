@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        var bulletPool = Root.BulletPool;
+        var bulletPool = Root.Pool;
         bulletPool.HideToPool(this);
     }
 }

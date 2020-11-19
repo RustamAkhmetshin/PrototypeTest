@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60aba64298e4816458dc70351ed87bea, type: 3}
-  m_Name: PlayerData
+  m_Script: {fileID: 11500000, guid: 680219d5575a06643b2d2fa5db6753a4, type: 3}
+  m_Name: PlayerConfiguration
   m_EditorClassIdentifier: 
   MaxHealth: 100
-  MoveSpeed: 0.2
-  ShootLatency: 0.2
-  BulletSpeed: 0.2
-  DamageStrength: 20
+  MoveSpeed: 5

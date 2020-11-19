@@ -28,7 +28,7 @@ public class EnemiesData : ScriptableObject
             }
             streamWriter.WriteLine( "}" );
         }
-        AssetDatabase.Refresh();
+       // AssetDatabase.Refresh();
     }
     #endif
 }

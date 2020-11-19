@@ -3,26 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JoystickUIComponent : Window, IJoystickUIComponent
+public class JoystickUIComponent : Window
 {
-    public event Action OnTouchDown = () => { };
-    public event Action OnTouchUp = () => { };
-    public event Action<Vector3> OnMove = (v) => { };
-
-    public void Move()
-    {
-        OnMove(new Vector3());
-    }
+    public event Action OnStartShooting = () => { };
+    public event Action OnStopShooting = () => { };
+    public event Action<Vector3> OnMove = (direction) => { };
+    
 
     public void StickTouched(bool touch)
     {
         if (touch)
         {
-            OnTouchDown();
+            OnStopShooting();
         }
         else
         {
-            OnTouchUp();
+            OnStartShooting();
         }
     }
 

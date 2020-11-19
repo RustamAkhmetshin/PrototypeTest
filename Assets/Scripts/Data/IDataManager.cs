@@ -1,7 +1,7 @@
 ﻿
 public interface IDataManager
 {
-   PlayerData GetPlayerData();
+   PlayerConfiguration GetPlayerData();
    EnemiesData GetEnemiesData();
    GlobalVariables GetGlobalVariables();
 }

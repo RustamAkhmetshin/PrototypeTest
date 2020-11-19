@@ -10,11 +10,9 @@ public class Root : MonoBehaviour
     private bool _initialized;
     
     private IUIManager _uiManager;
-    private IJoystickUIComponent _joystickUiComponent;
-    private IPlayerController _playerController;
-    private IPool _bulletPool;
+    private IPool _pool;
     private ILevelManager _levelManager;
-    private IEnemiesController _enemiesController;
+    private IInputManager _inputManager;
     private IDataManager _dataManager;
 
     void Awake()
@@ -45,31 +43,21 @@ public class Root : MonoBehaviour
         get { return _instance._uiManager = _instance._uiManager ?? _factory.GetUIManager(); }
     }
     
-    public static IJoystickUIComponent JoystickUiComponent
+    public static IInputManager InputManager
     {
-        get { return _instance._joystickUiComponent = _instance._joystickUiComponent ?? _factory.GetJoystickUIComponent(); }
+        get { return _instance._inputManager = _instance._inputManager ?? _factory.GetInputManager(); }
     }
-    
-    public static IPlayerController PlayerController
+
+    public static IPool Pool
     {
-        get { return _instance._playerController = _instance._playerController ?? _factory.GetPlayerController(); }
-    }
-    
-    public static IPool BulletPool
-    {
-        get { return _instance._bulletPool = _instance._bulletPool ?? _factory.GetBulletPool(); }
+        get { return _instance._pool = _instance._pool ?? _factory.GetPool(); }
     }
     
     public static ILevelManager LevelManager
     {
         get { return _instance._levelManager = _instance._levelManager ?? _factory.GetLevelManager(); }
     }
-    
-    public static IEnemiesController EnemiesController
-    {
-        get { return _instance._enemiesController = _instance._enemiesController ?? _factory.GetEnemiesController(); }
-    }
-    
+
     public static IDataManager DataManager
     {
         get { return _instance._dataManager = _instance._dataManager ?? _factory.GetDataManager(); }

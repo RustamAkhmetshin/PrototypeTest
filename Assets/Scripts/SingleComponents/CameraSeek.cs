@@ -9,7 +9,7 @@ public class CameraSeek : MonoBehaviour
 
     void LateUpdate()
     {
-        if (Root.LevelManager.IsGameStarted())
+/*        if (Root.LevelManager.IsGameStarted())
         {
             var player = Root.PlayerController;
 
@@ -26,7 +26,7 @@ public class CameraSeek : MonoBehaviour
                 minX = player.GetPlayerPosition().z;
                 maxX = minX + 20;
             }
-        }
+        }*/
 
     }
 }

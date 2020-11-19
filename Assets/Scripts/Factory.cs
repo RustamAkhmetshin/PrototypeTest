@@ -5,31 +5,19 @@ using UnityEngine;
 public class Factory : MonoBehaviour
 {
     [SerializeField] private GameObject _uiManager;
-    [SerializeField] private GameObject _joystickUIComponent;
-    [SerializeField] private GameObject _playerController;
-    [SerializeField] private GameObject _bulletPool;
+    [SerializeField] private GameObject _pool;
     [SerializeField] private GameObject _levelManager;
-    [SerializeField] private GameObject _enemiesController;
+    [SerializeField] private GameObject _inputManager;
     [SerializeField] private GameObject _dataManager;
     
     public IUIManager GetUIManager()
     {
         return Instantiate(_uiManager, transform).GetComponent<IUIManager>();
     }
-    
-    public IJoystickUIComponent GetJoystickUIComponent()
+
+    public IPool GetPool()
     {
-        return Instantiate(_joystickUIComponent, transform).GetComponent<IJoystickUIComponent>();
-    }
-    
-    public IPlayerController GetPlayerController()
-    {
-        return Instantiate(_playerController, transform).GetComponent<IPlayerController>();
-    }
-    
-    public IPool GetBulletPool()
-    {
-        return Instantiate(_bulletPool, transform).GetComponent<IPool>();
+        return Instantiate(_pool, transform).GetComponent<IPool>();
     }
     
     public ILevelManager GetLevelManager()
@@ -37,11 +25,11 @@ public class Factory : MonoBehaviour
         return Instantiate(_levelManager, transform).GetComponent<ILevelManager>();
     }
     
-    public IEnemiesController GetEnemiesController()
+    public IInputManager GetInputManager()
     {
-        return Instantiate(_enemiesController, transform).GetComponent<IEnemiesController>();
+        return Instantiate(_inputManager, transform).GetComponent<IInputManager>();
     }
-    
+
     public IDataManager GetDataManager()
     {
         return Instantiate(_dataManager, transform).GetComponent<IDataManager>();

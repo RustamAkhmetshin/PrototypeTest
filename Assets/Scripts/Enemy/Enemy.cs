@@ -1,96 +1,83 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using EventBusSystem;
 using UnityEngine;
 
-public class Enemy : CharacterUnit
+public class Enemy : CharacterUnit, IDamagable, IEnemyStateControlHandler
 {
-    private float _shootingTime;
-    private float _shootTime = 0;
-
-    private List<Vector3> _movePoints;
-    private Vector3 _targetToMove;
-    private int _targetToMoveIndex;
-
-    private float ShootingTime;
-
-    public Enemy(float maxHealth, float moveSpeed, float shootLatency, float bulletSpeed, float damageStrength, Transform characterTransform, float shootingTime, List<Transform> movePoints)
-        : base(maxHealth, moveSpeed, shootLatency, bulletSpeed, damageStrength, characterTransform)
+    private MovementType _movementType;
+    private Weapon _weapon;
+    private Transform _characterTransform;
+    private Vector3 moveDirection;
+    
+    public Vector3 Position
     {
-        this.ShootingTime = shootingTime;
-        this._movePoints = new List<Vector3>();
-        foreach (var mp in movePoints)
-        {
-            this._movePoints.Add(mp.position);
-        }
-        _targetToMove = _movePoints[0];
-        _targetToMoveIndex = 0;
+        get { return _characterTransform.position; }
+    }
+    
+    public Quaternion Rotation
+    {
+        get { return _characterTransform.rotation; }
+    }
+
+    public Enemy(EnemyData enemyData, MovementType movementType, Weapon weapon, Transform enemyController)
+        : base(enemyData.MaxHealth)
+    {
+        this.moveDirection = Vector3.zero;
+        this._movementType = movementType;
+        this._weapon = weapon;
+        this._characterTransform = enemyController;
+        _movementType.SetSpeed(enemyData.MoveSpeed);
+        
+        EventBus.Subscribe(this);
     }
     
     public event Action OnDied = () => { };
     public event Action<Transform> OnReadyToShoot = (target) => { };
     
-    public override void Move(Vector3 direction)
+    public void Move(Vector3 direction)
     {
-        CurrentState = State.IsMoving;
+        moveDirection = direction;
+        CurrentUnitState = UnitState.IsMoving;
+    }
+    
+    public void StartShoting()
+    {
+        CurrentUnitState = UnitState.IsShooting;
+    }
+    
+    public void StopShoting()
+    {
+        CurrentUnitState = UnitState.Idle;
     }
 
     public override void Update(float deltaTime)
     {
-        if (CurrentState == State.IsNotAlive)
+        if (CurrentUnitState == UnitState.IsNotAlive)
         {
             return;
         }
         
-        if (CurrentState == State.IsShooting)
+        if (CurrentUnitState == UnitState.IsShooting)
         {
-            _shootingTime += deltaTime;
-            _shootTime += deltaTime;
-
-            if (_shootTime >= ShootLatency)
-            {
-                Shoot();
-                _shootTime = 0;
-            }
-
-            if (_shootingTime > ShootingTime)
-            {
-                if (CurrentState != State.IsNotAlive)
-                {
-                    CurrentState = State.IsMoving;
-                    _shootingTime = 0;
-                }
-            }
+            LookAtPlayer();
+           _weapon.Shoot(deltaTime);
         }
     }
 
     public override void FixedUpdate(float fixedDeltaTime)
     {
-        if (CurrentState == State.IsNotAlive)
+        if (CurrentUnitState == UnitState.IsNotAlive)
         {
             return;
         }
         
-        if (CurrentState == State.IsMoving)
+        if (CurrentUnitState == UnitState.IsMoving)
         {
-            float step =  MoveSpeed * fixedDeltaTime;
-            CharacterTransform.position = Vector3.MoveTowards(CharacterTransform.position, _targetToMove, step);
-            if (Vector3.Distance(CharacterTransform.position, _targetToMove) < 0.001f)
-            {
-                
-                _targetToMoveIndex = (_targetToMoveIndex + 1) % 2;
-                _targetToMove = _movePoints[_targetToMoveIndex];
-                if(CurrentState != State.IsNotAlive)
-                    CurrentState = State.IsShooting;
-            }
+          _movementType.Move(moveDirection, ref _characterTransform, fixedDeltaTime);
         }
     }
-
-    public void StopGame()
-    {
-        CurrentState = State.IsNotAlive;
-    }
-    
 
     public override void Hit(Collider collider)
     {
@@ -100,20 +87,25 @@ public class Enemy : CharacterUnit
             AddDamage(b.Damage);
         }
     }
-    
-    public override void Die()
+
+    public void AddDamage(float damage)
     {
-        CurrentState = State.IsNotAlive;
+        StateData.Health -= damage;
+    }
+
+    public void Die()
+    {
+        CurrentUnitState = UnitState.IsNotAlive;
         OnDied();
     }
-    
-    public Vector3 GetPosition()
+
+    public void LookAtPlayer()
     {
-        return CharacterTransform.position;
+        
     }
-    
-    public override void Shoot()
+
+    public void ChangeEnemyState(UnitState state)
     {
-        OnReadyToShoot(CharacterTransform);
+        
     }
 }

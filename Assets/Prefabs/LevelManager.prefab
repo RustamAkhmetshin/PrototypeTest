@@ -43,5 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9cb9b2bb4106374a8c034df95b96b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerController: {fileID: 3835067053389185293, guid: 1d05db262d0cf9d4699db782c96f3db5,
+    type: 3}
   _restartWindow: {fileID: 1300652952904190642, guid: b0d0335ff59d55c4b8a4e30efe491529,
     type: 3}

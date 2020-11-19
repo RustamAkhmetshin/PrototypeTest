@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class DataManager : MonoBehaviour, IDataManager
 {
-    [SerializeField] private PlayerData _playerData;
+    [SerializeField] private PlayerConfiguration _playerConfiguration;
     [SerializeField] private EnemiesData _enemiesData;
     [SerializeField] private GlobalVariables _globalVariables;
     
-    public PlayerData GetPlayerData()
+    public PlayerConfiguration GetPlayerData()
     {
-        return _playerData;
+        return _playerConfiguration;
     }
 
     public EnemiesData GetEnemiesData()

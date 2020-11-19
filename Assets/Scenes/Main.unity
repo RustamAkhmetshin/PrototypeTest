@@ -922,15 +922,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiManager: {fileID: 3113575329198258150, guid: 46ebb7c63ea29cb46870071ee8bfb843,
     type: 3}
-  _joystickUIComponent: {fileID: 5307117265573569640, guid: 063badab019d5e74bbea4f0d52dba918,
-    type: 3}
-  _playerController: {fileID: 3835067053389185293, guid: 1d05db262d0cf9d4699db782c96f3db5,
-    type: 3}
-  _bulletPool: {fileID: 6205118084911106287, guid: ba38ae5528af13f40893f7819b576d9d,
-    type: 3}
+  _pool: {fileID: 6205118084911106287, guid: ba38ae5528af13f40893f7819b576d9d, type: 3}
   _levelManager: {fileID: 1501218923272092062, guid: b4f2fb18e61f7c24e9674d1a6c302a5d,
     type: 3}
-  _enemiesController: {fileID: 2537703948408649030, guid: 4b0bf69fb615237498e8051ef0811dcf,
+  _inputManager: {fileID: 5307117265573569640, guid: 063badab019d5e74bbea4f0d52dba918,
     type: 3}
   _dataManager: {fileID: 9089157881871200561, guid: 7008c1644b825bf4ea6d73587af77629,
     type: 3}
